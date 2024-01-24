@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden; /* Hide overflow to prevent scrollbars */
+        }
+
+        .rain {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            pointer-events: none;
+            animation: rainAnimation 0.5s linear infinite;
+        }
+
+        @keyframes rainAnimation {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+
+        /* Additional styling for your content goes here */
+
+        /* Optional: JavaScript for creating raindrops */
+        .raindrop {
+            position: absolute;
+            width: 20px;
+            height: 100px;
+            background-color: #00f;
+            bottom: 100%;
+            animation: fall 0.5s linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Your content goes here -->
+
+    <div class="rain"></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            createRaindrops();
+        });
+
+        function createRaindrops() {
+            const rainContainer = document.querySelector('.rain');
+
+            for (let i = 0; i < 100; i++) {
+                const raindrop = document.createElement('div');
+                raindrop.className = 'raindrop';
+                raindrop.style.left = `${Math.random() * 100}vw`;
+                raindrop.style.animationDuration = `${Math.random() * 0.5 + 0.5}s`;
+
+                rainContainer.appendChild(raindrop);
+            }
+        }
+    </script>
+</body>
+</html>
